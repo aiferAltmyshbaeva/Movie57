@@ -10,6 +10,7 @@ import com.example.movie57.R
 import com.example.movie57.databinding.ActivityMainBinding
 import com.example.movie57.model.MovieModel
 import com.example.movie57.presenter.Presenter
+import com.example.movie57.utils.changeScreen
 import com.example.movie57.view.MovieView
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -34,10 +35,14 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), MovieView {
         }
     }
 
-    override fun showMovie(movieModel: MovieModel) {
-        Log.e("ololo", "showMovie: $movieModel")
-        binding.posterImg.load(movieModel.Poster)
+    override fun navigationToDetailScreen(movieModel: MovieModel) {
+        changeScreen(DetailActivity(), movieModel, "key")
     }
+
+//    override fun showMovie(movieModel: MovieModel) {
+//        Log.e("ololo", "showMovie: $movieModel")
+//        binding.posterImg.load(movieModel.Poster)
+//    }
 
     override fun showError(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()

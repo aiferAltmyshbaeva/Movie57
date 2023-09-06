@@ -15,8 +15,9 @@ class Presenter @Inject constructor(private val movieApi: MovieApi) {
     fun getMovieDetails(name: String) {
         movieApi.getMovie(name).enqueue(object : Callback<MovieModel> {
             override fun onResponse(call: Call<MovieModel>, response: Response<MovieModel>) {
-                response.body()?.let {
-                    movieView.showMovie(it)
+                response.body()?.let {model ->
+                    movieView.navigationToDetailScreen(model)
+////                    movieView.showMovie(it)
                 }
             }
 

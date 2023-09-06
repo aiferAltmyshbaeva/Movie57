@@ -1,5 +1,7 @@
 package com.example.movie57.model
 
+import java.io.Serializable
+
 //{
 //    "Title": "Hulk",
 //    "Year": "2003",
@@ -49,9 +51,9 @@ data class MovieModel(
     var Awards: String,
     var Poster: String,
     var Ratings: ArrayList<RatingModel>,
-)
+) : Serializable
 
 data class RatingModel(
-    var Value: String,
-    var Source: String
-)
+    var Source: String,
+    var Value: String
+) : Serializable
